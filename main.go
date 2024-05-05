@@ -43,7 +43,9 @@ var (
 	pinGreen = Pin{pin: 24}
 	pinGsm   = Pin{pin: 21}
 )
-var ttys = []string{"/dev/ttyS1", "/dev/ttyS2", "/dev/ttyS3", "/dev/ttyS4", "/dev/ttyS5", "/dev/ttyS6", "/dev/ttyS7"}
+
+// var ttys = []string{"/dev/ttyS1", "/dev/ttyS2", "/dev/ttyS3", "/dev/ttyS4", "/dev/ttyS5", "/dev/ttyS6", "/dev/ttyS7"}
+var ttys = []string{"/dev/ttyS4"}
 
 func gsmtest() {
 	pinGsm.open()
@@ -51,8 +53,8 @@ func gsmtest() {
 	for {
 		for _, v := range ttys {
 			fmt.Printf("test pin gsm %v device %s\n", pinGsm.state(), v)
-			if gsmwork(v, 115200) != nil {
-				fmt.Println("is not sucsessed!")
+			if err := gsmwork(v, 115200); err != nil {
+				fmt.Printf("%s ...is not sucsessed! \n", err.Error())
 			} else {
 				fmt.Println("is sucsess...")
 				os.Exit(0)
