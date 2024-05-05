@@ -45,7 +45,7 @@ var (
 )
 
 // var ttys = []string{"/dev/ttyS1", "/dev/ttyS2", "/dev/ttyS3", "/dev/ttyS4", "/dev/ttyS5", "/dev/ttyS6", "/dev/ttyS7"}
-var ttys = []string{"/dev/ttyS4"}
+var ttys = []string{"/dev/ttyS2"}
 
 func gsmtest() {
 	pinGsm.open()
